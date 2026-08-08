@@ -66,3 +66,11 @@ target/
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
+
+.settings/
+
+data/*.db
+data/*.db-shm
+data/*.db-wal
+
+.env
