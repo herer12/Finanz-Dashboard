@@ -3,12 +3,11 @@
 ## Phase 0 – Projektsetup
 
 - [ ] Repository erstellen
-- [ ] Spring Boot Projekt erstellen
+- [ ] Java Projekt erstellen
 - [ ] Java-Version festlegen
 - [ ] Maven konfigurieren
 - [ ] SQLite anbinden
-- [ ] Flyway konfigurieren
-- [ ] CI-Grundlage vorbereiten
+- [x] CI-Grundlage vorbereiten
 
 ## Phase 1 – Datenmodell
 

@@ -16,15 +16,11 @@ Die Anwendung soll finanzielle Kennzahlen übersichtlich darstellen und dabei he
 ## Technologie-Stack
 
 - Java 24
-- Spring Boot
 - Maven
 - SQLite
-- Spring Data JPA / Hibernate
 - REST API
 - HTML/CSS/JavaScript als initiales Frontend
 - JUnit 5
-- Mockito
-- Flyway für Datenbankmigrationen
 
 ## Projektstatus
 
@@ -48,11 +44,6 @@ Voraussetzungen:
 - Maven 3.9+
 - Git
 
-Nach dem Erstellen des Spring-Boot-Projekts:
-
-```bash
-./mvnw spring-boot:run
-```
 
 Die SQLite-Datenbank wird lokal als Datei geführt.
 

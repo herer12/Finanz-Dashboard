@@ -166,9 +166,6 @@ Service Layer
 Repository Layer
    |
    v
-JPA / Hibernate
-   |
-   v
 SQLite
 ```
 
@@ -213,7 +210,9 @@ finance-dashboard/
 ├── README.md
 ├── pom.xml
 ├── .gitignore
-├── .env.example
+├── .env
+├── LICENSE
+├── .gitattributes
 ├── docs/
 │   ├── PROJECT_PLAN.md
 │   ├── ARCHITECTURE.md
@@ -225,7 +224,7 @@ finance-dashboard/
 ├── src/
 │   ├── main/
 │   │   ├── java/
-│   │   │   └── com/example/finance/
+│   │   │   └── finance/
 │   │   │       ├── FinanceApplication.java
 │   │   │       ├── controller/
 │   │   │       ├── service/
@@ -236,8 +235,6 @@ finance-dashboard/
 │   │   │       ├── exception/
 │   │   │       └── config/
 │   │   └── resources/
-│   │       ├── application.yml
-│   │       └── db/migration/
 │   └── test/
 │       └── java/
 └── data/
@@ -405,25 +402,9 @@ Kritische Geschäftslogik soll umfassend getestet werden.
 
 ---
 
-## 14. Datenbankmigrationen
+## 14. Logging
 
-Flyway wird verwendet, um das Datenbankschema zu versionieren.
-
-Beispiel:
-
-```text
-V1__create_categories.sql
-V2__create_budgets.sql
-V3__create_expenses.sql
-V4__create_subscriptions.sql
-V5__create_savings_goals.sql
-```
-
----
-
-## 15. Logging
-
-Logging mit SLF4J / Spring Boot.
+Logging mit Logger vom at.erik_van_haentjens.
 
 Zu loggen:
 
@@ -440,30 +421,7 @@ Nicht loggen:
 
 ---
 
-## 16. Git-Strategie
-
-Empfohlene Branches:
-
-```text
-main
-develop
-feature/...
-bugfix/...
-```
-
-Commit-Beispiele:
-
-```text
-feat: add subscription management
-feat: add budget calculation
-fix: prevent negative savings amount
-test: add savings goal service tests
-docs: update API documentation
-```
-
----
-
-## 17. Definition of Done
+## 15. Definition of Done
 
 Eine Funktion gilt als fertig, wenn:
 
@@ -480,7 +438,7 @@ Details siehe `DEFINITION_OF_DONE.md`.
 
 ---
 
-## 18. Risiken
+## 16. Risiken
 
 ### SQLite
 

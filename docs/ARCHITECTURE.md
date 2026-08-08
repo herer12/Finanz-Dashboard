@@ -13,8 +13,6 @@ Service
  ↓
 Repository
  ↓
-JPA/Hibernate
- ↓
 SQLite
 ```
 
@@ -34,7 +32,7 @@ Konvertierung zwischen Entity und DTO.
 
 ### repository
 
-Spring-Data-Repositories und Datenbankabfragen.
+Repositories und Datenbankabfragen.
 
 ### service
 

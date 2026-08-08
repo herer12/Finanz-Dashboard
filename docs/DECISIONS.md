@@ -24,28 +24,7 @@ Die Architektur soll Datenbankdetails kapseln, damit ein späterer Wechsel mögl
 
 ---
 
-## ADR-002 – Spring Boot
-
-### Status
-
-Akzeptiert
-
-### Entscheidung
-
-Spring Boot wird als Backend-Framework verwendet.
-
-### Begründung
-
-- etabliertes Java-Ökosystem
-- REST-Unterstützung
-- Dependency Injection
-- Validation
-- Testing
-- gute Erweiterbarkeit
-
----
-
-## ADR-003 – Geldbeträge
+## ADR-002 – Geldbeträge
 
 ### Status
 
@@ -61,7 +40,7 @@ Vermeidung von Ungenauigkeiten durch binäre Floating-Point-Darstellung.
 
 ---
 
-## ADR-004 – DTOs
+## ADR-003 – DTOs
 
 ### Status
 
