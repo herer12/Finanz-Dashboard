@@ -2,7 +2,7 @@ package finance.config;
 
 import at.herer12_erik_van_haentjens.logging.Logger;
 
-public class LoggerSettings extends Setting {
+class LoggerSettings extends Setting {
     private static boolean asyncEnabled = false;
     private static boolean colorEnabled = true;
     private static int maxBackups = 1;
@@ -19,12 +19,15 @@ public class LoggerSettings extends Setting {
         Logger.Config.setFileEnabled(fileEnabled);
     }
 
+    /**
+     * Activates the logger with the right Settings.
+     * This Class does not have to be saved because it is not needed to change or use any Data.
+     */
     LoggerSettings() {
         Logger.Config.setFileEnabled(false);
         Logger.Config.setAsyncEnabled(false);
         super("LoggerSettings.conf");
         configure();
-        logger.debug("asyncEnabled: " + asyncEnabled + " colorEnabled: " + colorEnabled + " maxBackups: " + maxBackups + " maxFileSizeMB: " + maxFileSizeMB + " logDir: " + logDir);
     }
 
     protected void decideSetting(String key, String value) {

@@ -8,7 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
-public abstract class Setting {
+abstract class Setting {
 
     protected Logger logger = Logger.getLogger(this.getClass());
     /**
@@ -38,8 +38,25 @@ public abstract class Setting {
     }
 
 
+    /**
+     * Decides the appropriate action or configuration for a given key-value pair
+     * parsed from a settings file. The implementation of this method is specific
+     * to the subclass, which will handle the setting logic based on the provided
+     * key and value.
+     *
+     * @param key   the name of the setting or configuration parameter to be processed
+     * @param value the value to set for the given configuration key
+     */
     protected abstract void decideSetting(String key, String value);
 
+    /**
+     * Parses the settings from the `settingFileData` array and delegates them to the
+     * {@code decideSetting(String, String)} method for processing. Each line in
+     * `settingFileData` is expected to be a key-value pair, separated by an equals sign ('=').
+     * <p>
+     * If an exception occurs during processing, the error is logged with a warning level.
+     * The method also logs the parsed key-value pairs for debugging purposes..
+     */
     private void setSetting(){
         try {
             for (String setting : settingFileData) {
