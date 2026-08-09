@@ -3,10 +3,10 @@
 ## Phase 0 – Projektsetup
 
 - [ ] Repository erstellen
-- [ ] Java Projekt erstellen
-- [ ] Java-Version festlegen
-- [ ] Maven konfigurieren
-- [ ] SQLite anbinden
+- [x] Java Projekt erstellen
+- [x] Java-Version festlegen
+- [x] Maven konfigurieren
+- [x] SQLite anbinden
 - [x] CI-Grundlage vorbereiten
 
 ## Phase 1 – Datenmodell

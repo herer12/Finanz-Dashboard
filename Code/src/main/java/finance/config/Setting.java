@@ -7,18 +7,20 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.function.BiConsumer;
 
 abstract class Setting {
 
-    protected Logger logger = Logger.getLogger(this.getClass());
+    protected static Logger logger = Logger.getLogger(Setting.class);
+
     /**
      * The data of the setting file.
      */
-    protected String[] settingFileData;
+    protected static String[] settingFileData;
 
-    Setting(String fileName){
+    static void setting(String fileName, BiConsumer<String, String> settingHandler) {
         loadFile(fileName);
-        setSetting();
+        setSetting(settingHandler);
     }
 
     /**
@@ -27,60 +29,50 @@ abstract class Setting {
      *
      * @param fileName the name of the file to be loaded, located in the "/config/" directory
      */
-    private void loadFile(String fileName){
-        Path path = Paths.get("config/"+fileName);
+    private static void loadFile(String fileName) {
+        Path path = Paths.get("config/" + fileName);
 
         try {
             settingFileData = Files.readAllLines(path).toArray(new String[0]);
         } catch (IOException e) {
-            logger.warn("Error reading setting file: "+fileName);
+            settingFileData = new String[0];
+            logger.warn("Error reading setting file: " + fileName);
+            logger.debug(e.getMessage());
         }
     }
 
-
     /**
-     * Decides the appropriate action or configuration for a given key-value pair
-     * parsed from a settings file. The implementation of this method is specific
-     * to the subclass, which will handle the setting logic based on the provided
-     * key and value.
-     *
-     * @param key   the name of the setting or configuration parameter to be processed
-     * @param value the value to set for the given configuration key
+     * Parses the settings from the settingFileData array and delegates them to the
+     * provided setting handler. Each line is expected to be a key-value pair separated
+     * by the first equals sign ('=').
      */
-    protected abstract void decideSetting(String key, String value);
-
-    /**
-     * Parses the settings from the `settingFileData` array and delegates them to the
-     * {@code decideSetting(String, String)} method for processing. Each line in
-     * `settingFileData` is expected to be a key-value pair, separated by an equals sign ('=').
-     * <p>
-     * If an exception occurs during processing, the error is logged with a warning level.
-     * The method also logs the parsed key-value pairs for debugging purposes..
-     */
-    private void setSetting(){
+    private static void setSetting(BiConsumer<String, String> settingHandler) {
         try {
             for (String setting : settingFileData) {
+                if (setting == null || setting.isBlank() || setting.trim().startsWith("#")) {
+                    continue;
+                }
 
-                String[] keyValue = setting.split("=");
+                String[] keyValue = setting.split("=", 2);
+
+                if (keyValue.length != 2) {
+                    logger.warn("Invalid setting line: " + setting);
+                    continue;
+                }
 
                 String key = keyValue[0].trim();
-
                 String value = keyValue[1].trim().replace(";", "");
 
                 String[] keySplit = key.split(" ");
-                key=keySplit[keySplit.length-1];
+                key = keySplit[keySplit.length - 1];
 
-                decideSetting(key, value);
-
+                settingHandler.accept(key, value);
 
                 logger.debug(key + " = " + value);
             }
-        }catch(Exception e){
-            logger.warn("Error setting variables from setting file: "+Arrays.toString(settingFileData));
+        } catch (Exception e) {
+            logger.warn("Error setting variables from setting file: " + Arrays.toString(settingFileData));
             logger.debug(e.getMessage());
         }
-
     }
-
-
 }

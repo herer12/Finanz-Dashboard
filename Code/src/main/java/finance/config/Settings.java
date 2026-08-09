@@ -1,14 +1,16 @@
 package finance.config;
 
 public class Settings {
-    private LoggerSettings loggerSettings = new LoggerSettings();
-    private DatabaseSettings databaseSettings = new DatabaseSettings();
+    private static LoggerSettings loggerSettings;
+    private static DatabaseSettings databaseSettings;
 
-    public Settings() {
-        loggerSettings.logger.info("LoggerSettings loaded");
-        databaseSettings.logger.info("DatabaseSettings loaded");
+    public static void initializeSettings(){
+        LoggerSettings.loggerSettings();
+        DatabaseSettings.databaseSettings();
+        Setting.logger.info("LoggerSettings initialized");
+        Setting.logger.info("DatabaseSettings initialized");
     }
-    public int getPort() {
-        return databaseSettings.getPort();
+    public static String getURL() {
+        return DatabaseSettings.getURL();
     }
 }

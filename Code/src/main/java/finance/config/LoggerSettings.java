@@ -23,14 +23,14 @@ class LoggerSettings extends Setting {
      * Activates the logger with the right Settings.
      * This Class does not have to be saved because it is not needed to change or use any Data.
      */
-    LoggerSettings() {
+    static void loggerSettings() {
         Logger.Config.setFileEnabled(false);
         Logger.Config.setAsyncEnabled(false);
-        super("LoggerSettings.conf");
+        setting("LoggerSettings.conf", LoggerSettings::decideSetting);
         configure();
     }
 
-    protected void decideSetting(String key, String value) {
+    protected static void decideSetting(String key, String value) {
         switch (key) {
             case "asyncEnabled":
                 asyncEnabled = Boolean.parseBoolean(value);

@@ -1,18 +1,25 @@
 package finance.config;
 
-class DatabaseSettings extends Setting{
+class DatabaseSettings extends Setting {
 
-    private int port = 3000;
-    DatabaseSettings() {
-        super("DatabaseSettings.conf");
+    private static String url;
 
+    static void databaseSettings() {
+        setting("DatabaseSettings.conf", DatabaseSettings::decideSetting);
     }
 
-    @Override
-    protected void decideSetting(String key, String value) {
-
+    private static void decideSetting(String key, String value) {
+        switch (key) {
+            case "url":
+                url = value;
+                break;
+            default:
+                logger.warn("Unknown database setting: " + key);
+                break;
+        }
     }
-    public int getPort() {
-        return port;
+
+    public static String getURL() {
+        return url;
     }
 }
