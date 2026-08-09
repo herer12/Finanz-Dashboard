@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS "Budget"(
     month Int,
     PRIMARY KEY("id"),
     Unique("categoryId", "year", "month"),
-    foreign key ("categoryId") references "Budget"("id")
+    foreign key ("categoryId") references "Category"("id")
 );
 
 Create Table IF NOT EXISTS "Expense"(
