@@ -11,8 +11,6 @@ import java.util.Optional;
 @RegisterBeanMapper(Category.class)
 public interface CategoryRepo {
 
-
-
         @SqlQuery("""
         SELECT id, name, active
         FROM "Category"

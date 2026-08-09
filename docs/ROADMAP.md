@@ -2,7 +2,7 @@
 
 ## Phase 0 – Projektsetup
 
-- [ ] Repository erstellen
+- [x] Repository erstellen
 - [x] Java Projekt erstellen
 - [x] Java-Version festlegen
 - [x] Maven konfigurieren

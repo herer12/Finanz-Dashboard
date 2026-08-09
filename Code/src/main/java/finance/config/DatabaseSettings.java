@@ -13,9 +13,6 @@ class DatabaseSettings extends Setting {
             case "url":
                 url = value;
                 break;
-            default:
-                logger.warn("Unknown database setting: " + key);
-                break;
         }
     }
 
