@@ -60,7 +60,7 @@ UNIQUE(category_id, year, month)
 Java-Domain:
 
 ```java
-BigDecimal
+long 
 ```
 
 Persistenz:
